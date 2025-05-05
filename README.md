@@ -1,13 +1,7 @@
-# Team 5
+# What is Bookie
+One might think that Bookie is just a copy of Good reads, but it wants to dive deeper into the aspects of genres and subgenres. Although it does provide the standard book list and book details when clicking on a book, it is solely based on the book genres that you choose. When first landing on the homepage, one is confronted with a selection of genres to choose from. Based on these genres, a book list is presented that gives you the book cover, title, but most importantly a chart produced by ChatGPT that lets the user know what subgenres this book contains based on the previously chosen umbrella genres. This is what sets Bookie apart from other applications. Through analyzing a bigger book snippet, it can let the user know the hidden subgenres that are not usually listed on other websites.
+However, this is not where the features of this application end. After receiving the book list, one can click on the book, where in addition to the standard book information there is an option to translate the text into two other languages and a link to a YouTube playlist catered to the book’s genre. These additional features should for one, help people whose mother tongue is not English and secondly provide a nice ambiance when the user reads the book.
+Finally, Bookie allows users to Login and thereby be able to save books to their Library. This feature enables the option on the homepage to search for books based on the genres that are represented on the user’s Library.
 
-Language Technology and Web Applications  
-Fall Semester 2024
+p.s. It is currently not running, but for any questions contact the author of the repository
 
-Code for team project
-
----
-
-URL of website: http://172.23.66.239:56313
-(only accessible inside UZH network)
-
-Database Connection URI: postgres://postgres:268242e9deb88b04451d19716526a9b2@172.23.66.239:59839/team_project_5_db
