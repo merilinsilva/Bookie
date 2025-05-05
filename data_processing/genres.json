@@ -1,0 +1,10 @@
+{"Classics": ["Ancient Literature", "British Classics", "American Classics", "World Classics", "Modernist Classics", "Postmodern Classics"],
+"Science Fiction": ["Space Opera", "Cyberpunk", "Steampunk", "Dystopian", "Utopian", "Posy-Apocalyptic"],
+"Fantasy": ["Urban Fantasy", "Dark Fantasy", "Magical Realism", "Mythological Fantasy", "Children Book"],
+"Mystery": ["Cozy", "Noir", "Historical Mysteries", "Thriller", "Police Procedurals"],
+"Horror": ["Gothic Horror", "Psychological Horror", "Supernatural Horror", "Slasher Horror", "Body Horror"],
+"Romance": ["Contemporary Romance", "Historical Romance", "Young Adult Romance", "LGBTQ Romance", "Erotic Romance"],
+"Poetry": ["Classic", "Modern", "Political", "Nature", "Epic", "Love"],
+"Health": ["Mental Health", "Nutrition", "Fitness", "Alternative Medicine", "Medical Research", "Mental Health"],
+"Biography": ["Historical Figures", "Memoirs", "Artists and Writers", "Entrepreneurs", "Scientists and Inventors", "Athletes", "Celebrities"]
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selection Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_sel2.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_loader.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Bookie Logo" width="200px">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('about') }}">
+                    <img src="{{ url_for('static', filename='vectors/about.svg') }}" alt="About">
+                    About</a></li>
+                <li>
+                    {% if current_user.is_authenticated %}
+                        <a href="{{ url_for('library') }}">
+                            <img src="{{ url_for('static', filename='vectors/profile.svg') }}" alt="Library">
+                            Library
+                        </a>
+                    {% else %}
+                        <a href="{{ url_for('register') }}">
+                            <img src="{{ url_for('static', filename='vectors/profile.svg') }}" alt="Profile">
+                            Profile
+                        </a>
+                    {% endif %}
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="recommendations">
+        <h2>Recommendations for you</h2>
+        <div class="mode-selector">
+            <label for="mode-select">Select mode to find a match:</label>
+            <select id="mode-select">
+                <option value="profile">By Profile</option>
+                <option value="genre">By Genre</option>
+            </select>
+        </div>
+
+        <button class="find-book-btn">find me a book</button>
+    </section>
+
+    <div class="loader">
+        <div class="loader-book">
+            <div class="book"></div>
+            <div class="page"></div>
+        </div>
+        <div class="loader-text">
+            READING<span class="dots"></span>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/function.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/get_genres.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/loader.js') }}"></script>
+</body>
+</html>

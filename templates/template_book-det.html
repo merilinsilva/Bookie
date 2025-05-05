@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>{{ book['title'] }} - {{ ", ".join(book['authors']) }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_book-det.css') }}">  
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_loader.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Bookie Logo" width="200px">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="{{ url_for('about') }}">
+                        <img src="{{ url_for('static', filename='vectors/about.svg') }}" alt="About"> About
+                    </a>
+                </li>
+                <li>
+                    {% if current_user.is_authenticated %}
+                        <a href="{{ url_for('library') }}">
+                            <img src="{{ url_for('static', filename='vectors/profile.svg') }}" alt="Library">
+                            Library
+                        </a>
+                    {% else %}
+                        <a href="{{ url_for('register') }}">
+                            <img src="{{ url_for('static', filename='vectors/profile.svg') }}" alt="Profile">
+                            Profile
+                        </a>
+                    {% endif %}
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="book-details">
+        <div class="book-header">
+            <h1>"{{ book['title'] }}" by {{ ", ".join(book['authors']) }}</h1>
+        </div>
+        
+        <div class="book-details-container">
+            <div class="book-cover">
+                <img src="{{ book['cover_image'] }}" alt="Book Cover" width="200">
+                <div class="rating">
+                    <p>★ {{ book['rating'] }}/5</p>
+                </div>
+            </div>
+
+            <div class="book-info">
+                <div id="book-description">
+                    <p>{{ book['abstract'] }}</p>
+                </div>
+
+                <div class="translate-links">
+                    <a href="#" class="translate-link" data-lang="en">English</a>
+                    <a href="#" class="translate-link" data-lang="de">German</a>
+                    <a href="#" class="translate-link" data-lang="zh">Chinese</a>
+                </div>
+
+                <button class="add-to-library">
+                    <img src="{{ url_for('static', filename='vectors/add-to-lib.svg') }}" alt="Add to Library"> Add to Library
+                </button>
+            </div>
+        </div>
+
+
+        <div class="playlist">
+            <p>A playlist to listen to while reading "{{ book['title'] }}":</p>
+            <div class="playlist-info">
+                <img src="{{ url_for('static', filename='vectors/youtube.svg') }}" alt="YouTube">
+                <a href="{{ book['playlist'] }}" class="playlist-name" data-full-text="{{ book['playlist_name'] }}"></a>
+            </div>
+        </div>
+
+        <div class="genre-chart">
+            <img src="{{ book['percentages'] }}" alt="Genre Chart">
+        </div>
+    </section>
+    <div class="loader">
+        <div class="loader-book">
+            <div class="book"></div>
+            <div class="page"></div>
+        </div>
+        <div class="loader-text">
+            READING<span class="dots"></span>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/store_books.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/loader.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/translate.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/restrict_playlistname.js') }}"></script>
+</body>
+</html>

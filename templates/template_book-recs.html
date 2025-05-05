@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommendations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_book-recs.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_loader.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Bookie Logo" width="200px">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('about') }}">
+                    <img src="{{ url_for('static', filename='vectors/about.svg') }}" alt="About"> About
+                </a></li>
+                <li>
+                    {% if current_user.is_authenticated %}
+                        <a href="{{ url_for('library') }}">
+                            <img src="{{ url_for('static', filename='vectors/profile.svg') }}" alt="Library">
+                            Library
+                        </a>
+                    {% else %}
+                        <a href="{{ url_for('register') }}">
+                            <img src="{{ url_for('static', filename='vectors/profile.svg') }}" alt="Profile">
+                            Profile
+                        </a>
+                    {% endif %}
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Your Book Recommendations</h2>
+            {% if recommendations %}
+            <div class="book-container">
+                {% for book_id, book in recommendations.items() %}
+                <div class="book-recommendation">
+                    <img src="{{ book['cover_image'] }}" alt="{{ book['title'] }}" class="book-cover">
+                    <div class="book-details">
+                        <h3>{{ book['title'] }} by {{ book['authors'] | join(' & ') }}</h3>
+                        <p>★ {{ book['rating'] }}/5</p>
+                        <p class="book-description" data-full-text="{{ book['abstract'] }}"></p>
+                        <a href="{{ url_for('book_details', book_id=book_id) }}" class="details-button">See more details</a>                    
+                    </div>
+                    <div class="plot-container">
+                            <img src="{{ book['percentages'] }}" alt="Subgenre Percentages" class="genre-chart">
+                    </div>
+
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p>No recommendations available. Please go back and select genres.</p>
+            {% endif %}
+        </section>
+    </main>
+
+    <footer>
+        <p>Powered by Bookie</p>
+    </footer>
+    <div class="loader">
+        <div class="loader-book">
+            <div class="book"></div>
+            <div class="page"></div>
+        </div>
+        <div class="loader-text">
+            READING<span class="dots"></span>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/loader.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/restrict_abstract.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/plot_size_recs.js') }}"></script>
+</body>
+</html>

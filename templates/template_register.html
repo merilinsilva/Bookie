@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Bookie</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_register.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_loader.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Bookie Logo" width="200px">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('about') }}">
+                    <img src="{{ url_for('static', filename='vectors/about.svg') }}" alt="About"> About</a></li>
+                <li>
+                    {% if current_user.is_authenticated %}
+                        <a href="{{ url_for('library') }}">
+                            <img src="{{ url_for('static', filename='vectors/profile.svg') }}" alt="Library">
+                            Library
+                        </a>
+                    {% else %}
+                        <a href="{{ url_for('register') }}">
+                            <img src="{{ url_for('static', filename='vectors/profile.svg') }}" alt="Profile">
+                            Profile
+                        </a>
+                    {% endif %}
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="login-container">
+            <h1>Register</h1>
+            <p>Create an account to have a library</p>
+            {% if error %}
+                <p class="error-message">{{ error }}</p>
+            {% endif %}
+            <form method="POST" action="{{ url_for('register') }}">
+                {{ form.hidden_tag() }}
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    {{ form.username(class_="form-control", id="username", placeholder="Enter name...") }}
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    {{ form.password(class_="form-control", id="password", placeholder="Enter password...") }}
+                </div>
+                <div class="input-group">
+                    {{ form.submit(class_="login-button") }}
+                </div>
+            </form>
+            <a href="{{ url_for('login') }}">Already have an account? Login!</a>
+        </section>
+    </main>
+
+    <div class="loader">
+        <div class="loader-book">
+            <div class="book"></div>
+            <div class="page"></div>
+        </div>
+        <div class="loader-text">
+            READING<span class="dots"></span>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/loader.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+.poppins-regular {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.recommendations {
+    background-color: #e4e2e2;
+    padding: 30px;
+    text-align: center;
+}
+
+.mode-selector {
+    margin-bottom: 20px;
+    border-radius: 7px;
+    padding-top: 42px;
+    font-size: 1.2rem;
+}
+
+/* color of selector */
+#mode-select {
+    background-color: #e5e5e5;
+    font-size: 0.9rem;
+}
+
+.genre-btn:hover {
+    background-color: #8FA86B;
+}
+
+.genre-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, auto); /* 3 equal columns */
+    gap: 0px;
+    justify-items: center;
+    padding-inline: 390px;
+}
+
+.genre-btn {
+    background-color: #7C8273;
+    color: #1e2416;
+    border: none;
+    padding: 10px 15px; /* Reduced padding for smaller buttons */
+    margin: 4px;
+    cursor: pointer;
+    border-radius: 12px;
+    font-size: 1rem;   /* Reduced font size */
+    text-align: center;
+    width: 170px;        /* Reduced width for smaller buttons */
+}
+
+.genre-btn.selected {
+    background-color: #8FA86B;
+}
+
+.find-book-btn {
+    background-color: #313926;
+    color: #E1E1E1;
+    border: none;
+    padding: 12px 18px;   /* Adjust padding for the "Find me a book" button */
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 1rem;       /* Adjust font size */
+    width: 180px;         /* Reduced width */
+    margin-left: auto;
+    margin-right: auto;    /* Center the button horizontally */
+}

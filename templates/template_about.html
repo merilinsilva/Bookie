@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Bookie</title>
+    <link href="https://fonts.googleapis.com/css?family=Rethink+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_about.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_loader.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Bookie Logo" width="200px">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('about') }}">
+                    <img src="{{ url_for('static', filename='vectors/about.svg') }}" alt="About">
+                    About</a></li>
+                <li>
+                    {% if current_user.is_authenticated %}
+                        <a href="{{ url_for('library') }}">
+                            <img src="{{ url_for('static', filename='vectors/profile.svg') }}" alt="Library">
+                            Library
+                        </a>
+                    {% else %}
+                        <a href="{{ url_for('register') }}">
+                            <img src="{{ url_for('static', filename='vectors/profile.svg') }}" alt="Profile">
+                            Profile
+                        </a>
+                    {% endif %}
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="what-is-bookie">
+            <h1>What is Bookie?!</h1>
+            <p>Tired of endless scrolling and mediocre book recommendations?</p>
+            <p><strong>Bookie</strong> is here to revolutionize your reading experience.</p><br>
+            <p>We’re your go-to website for discovering amazing books tailored to your unique taste.</p>
+            <h2>Here’s how it works:</h2>
+            <ol>
+                🕺<strong>Choose Your Vibe:</strong> Select your favorite genres or moods<br>
+                🎯 <strong>Get Personalized Recs:</strong> Our smart algorithm will curate a list of books just for you.<br>
+                📚 <strong>Build Your Library:</strong> Add your picks to your digital bookshelf.<br>
+                🎶 <strong>Tune In:</strong> Every book comes with a matching playlist to elevate your reading experience.<br>
+            </ol>
+            <h3>Why Bookie?</h3>
+            <ul>
+                <li>Personalized Recommendations: We know you, and we know what you’ll love.</li>
+                <li>Curated Playlists: Dive deeper into your story with the perfect soundtrack.</li>
+            </ul>
+            <p><strong>Ready to embark on your next literary adventure?</strong> Join the Bookie community today!</p>   
+        </section>
+        <section id="team">
+            <h2>Who’s behind Bookie?</h2>
+            <div class="team">
+                <div class="team-member">
+                    <img src="{{ url_for('static', filename='avatars/meri.png') }}" alt="Merii">
+                    <p>Merii</p>
+                </div>
+                <div class="team-member">
+                    <img src="{{ url_for('static', filename='avatars/shubhi.png') }}" alt="Shubs">
+                    <p>Shubs</p>
+                </div>
+                <div class="team-member">
+                    <img src="{{ url_for('static', filename='avatars/liz.png') }}" alt="Liz">
+                    <p>Liz</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="loader">
+        <div class="loader-book">
+            <div class="book"></div>
+            <div class="page"></div>
+        </div>
+        <div class="loader-text">
+            READING<span class="dots"></span>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/loader.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Rethink+Sans" rel="stylesheet">
+    <title>{{ book['title'] }} - {{ ", ".join(book['authors']) }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_loader.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_book-det.css') }}">  
+    <title>{{ book.book_title }} - {{ book.book_authors }}</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Bookie Logo" width="200px">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="{{ url_for('about') }}">
+                        <img src="{{ url_for('static', filename='vectors/about.svg') }}" alt="About"> About
+                    </a>
+                </li>
+                <li>
+                    {% if current_user.is_authenticated %}
+                        <a href="{{ url_for('library') }}">
+                            <img src="{{ url_for('static', filename='vectors/profile.svg') }}" alt="Library">
+                            Library
+                        </a>
+                    {% else %}
+                        <a href="{{ url_for('register') }}">
+                            <img src="{{ url_for('static', filename='vectors/profile.svg') }}" alt="Profile">
+                            Profile
+                        </a>
+                    {% endif %}
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="back-btn">
+        <a href="{{ url_for('library') }}">
+            <img src="{{ url_for('static', filename='vectors/arrow.svg') }}" alt="Arrow">
+            Back to Library
+        </a>
+    </div>
+
+    <section class="book-details">
+        <div class="book-header">
+            <h1>{{ book.book_title }} by {{ book.book_authors }}</h1>
+        </div>
+        
+        <div class="book-details-container">
+            <div class="book-cover">
+                <img src="{{ book.book_cover }}" alt="{{ book.book_title }}" width="200">
+                <div class="rating">
+                    <p>★ {{ book['rating'] }}/5</p>
+                </div>
+            </div>
+
+            <div class="book-info">
+                <p>{{ book.book_description }}</p>
+                <div class="translate-links">
+                    <a href="#" data-lang="en">English</a>
+                    <a href="#" data-lang="es">Spanish</a>
+                    <a href="#" data-lang="zh">Chinese</a>
+                </div>
+                <button class="remove-book-btn">
+                    <img src="{{ url_for('static', filename='vectors/remove.svg') }}" alt="Remove from Library"> Remove Book from Library
+                </button>
+            </div>
+        </div>
+
+        <div class="playlist">
+            <p>A playlist to accompany:</p>
+            <div class="playlist-info">
+                <img src="{{ url_for('static', filename='vectors/youtube.svg') }}" alt="YouTube">
+                <a href="{{ book.book_playlist }}" class="playlist-name" data-full-text="{{ book.book_playlistname }}">
+                </a>
+            </div>
+        </div>
+
+        <div class="genre-chart">
+            <img src="{{ book.percentages }}" alt="Genre Chart">
+        </div>
+    </section>
+
+    <div class="loader">
+        <div class="loader-book">
+            <div class="book"></div>
+            <div class="page"></div>
+        </div>
+        <div class="loader-text">
+            READING<span class="dots"></span>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/remove_book.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/loader.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/translate.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/restrict_playlistname.js') }}"></script>
+</body>
+</html>

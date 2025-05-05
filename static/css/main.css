@@ -1,0 +1,73 @@
+
+/* optional, change */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #E1E1E1;
+    font-family: 'Poppins', sans-serif;
+    color: #1e2416;   
+}
+
+h2 {
+    font-family: 'Rethink Sans', sans-serif;
+    color: #1e2416;
+    text-align: center; 
+    font-weight: 10;  
+    font-size: 40px;
+}
+
+
+h1, h3, h4, h5, h6 {
+    font-family: 'Rethink Sans', sans-serif;
+    color: #1e2416;
+    text-align: left;
+
+}
+
+
+/* Header and Footer */
+header, footer {
+    background-color: #475039;
+    color: #E1E1E1;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+
+/* about, profile */
+nav li {
+    margin-right: 20px;
+    padding: 10px;
+}
+
+
+nav a {
+    color: #E1E1E1;
+    /* because else it underlines */
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+nav a img {
+    margin-bottom: 5px;
+}
+
+

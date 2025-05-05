@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Rethink+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_library.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_loader.css') }}">
+    <title>Library</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Bookie Logo" width="200px">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="{{ url_for('about') }}">
+                        <img src="{{ url_for('static', filename='vectors/about.svg') }}" alt="About">
+                        About
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="{{ url_for('static', filename='vectors/profile.svg') }}" alt="Profile">
+                        Profile
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="added-books">
+        <h1>Added Books</h1>
+
+        {% if books %}
+            <!-- Dynamic Genres Section -->
+            <p class="genres">
+                <strong>Genres</strong>: {{ books | map(attribute='umbrella_genre') | unique | join(', ') }}
+            </p>
+        
+        <a href="{{ url_for('logout') }}">Logout</a>
+
+            <!-- Book Grid -->
+            <div class="book-grid">
+                {% for book in books %}
+                    <div class="book">
+                        <a href="{{ url_for('library_book_details', book_id=book.id) }}">
+                            <img src="{{ book.book_cover }}" alt="{{ book.book_title }}">
+                        </a>
+                        <p>{{ book.book_title }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+            <!-- End of Book Grid -->
+        {% else %}
+            <p>Your library is empty.</p>
+        {% endif %}
+    </div>
+
+    <div class="loader"></div>
+    <script src="{{ url_for('static', filename='js/loader.js') }}"></script>
+</body>
+</html>
